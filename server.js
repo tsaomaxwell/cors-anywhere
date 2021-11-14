@@ -8,7 +8,7 @@ var port = process.env.PORT || 8080;
 // immediate abuse (e.g. denial of service). If you want to block all origins except for some,
 // use originWhitelist instead.
 var originBlacklist = [];
-var originWhitelist = ["https://club-resources-embark.s3.amazonaws.com", "https://embark-test.netlify.app/", ""];
+var originWhitelist = ["https://club-resources-embark.s3.amazonaws.com", "https://embark-test.netlify.app/", "", "http://localhost:3000"];
 function parseEnvList(env) {
   if (!env) {
     return [];
