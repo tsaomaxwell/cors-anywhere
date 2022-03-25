@@ -7,8 +7,8 @@ var port = process.env.PORT || 8080;
 // again. CORS Anywhere is open by design, and this blacklist is not used, except for countering
 // immediate abuse (e.g. denial of service). If you want to block all origins except for some,
 // use originWhitelist instead.
-var originBlacklist = [];
-var originWhitelist = ["https://club-resources-embark.s3.amazonaws.com", "https://embark-test.netlify.app", "", "http://localhost:3000", "https://deploy-preview-99--embark-test.netlify.app"];
+//var originBlacklist = [];
+var originWhitelist = ["https://club-resources-embark.s3.amazonaws.com", "https://embark-test.netlify.app", ""];
 function parseEnvList(env) {
   if (!env) {
     return [];
@@ -17,11 +17,11 @@ function parseEnvList(env) {
 }
 
 // Set up rate-limiting to avoid abuse of the public CORS Anywhere server.
-var checkRateLimit = require('./lib/rate-limit')('3 1');
+var checkRateLimit = require('./lib/rate-limit')('10 1');
 
 var cors_proxy = require('./lib/cors-anywhere');
 cors_proxy.createServer({
-  originBlacklist: originBlacklist,
+  //originBlacklist: originBlacklist,
   originWhitelist: originWhitelist,
   checkRateLimit: checkRateLimit,
   removeHeaders: [
